@@ -132,8 +132,8 @@ HEALTHX/
 
 ## 👤 Author
 **Sidharth Deora**
-- [GitHub](https://github.com/deorasidharth)
-- [LinkedIn](https://linkedin.com/in/sidharthdeora)
+- [GitHub](https://github.com/thedeorasidharth)
+- [LinkedIn](https://linkedin.com/in/thedeorasidharth)
 
 ---
 
