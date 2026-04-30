@@ -50,8 +50,8 @@ HealthX is a premium, full-stack MERN application designed to streamline healthc
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/healthx.git
-cd healthx
+git clone https://github.com/thedeorasidharth/HEALTHX.git
+cd HEALTHX
 ```
 
 ### **2. Backend Setup**
