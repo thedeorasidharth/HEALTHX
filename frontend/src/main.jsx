@@ -6,6 +6,10 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
+if (!import.meta.env.VITE_API_URL) {
+  console.warn("⚠️ VITE_API_URL is not defined! API calls may fail.");
+}
+
 export const Context = createContext({
   isAuthenticated: false,
 });

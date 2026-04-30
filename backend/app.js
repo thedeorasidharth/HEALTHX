@@ -14,12 +14,25 @@ import analyticsRouter from "./router/analyticsRouter.js"
 const app = express();
 config({path:"./config/config.env"});
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.DASHBOARD_URL,
+].filter(Boolean);
+
 app.use(
-    cors({
-    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL, "https://health-x-frontend.vercel.app", "https://health-x-dashboard.vercel.app"],
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-})
+  })
 );
 
 app.use(cookieParser());
