@@ -33,11 +33,29 @@ app.use(
 })
 );
 
-app.use("/api/v1/message", messageRouter);
+// Health Check Routes
+app.get("/", (req, res) => {
+  res.send("HealthX API is running 🚀");
+});
+
+app.get("/api/v1", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "HealthX API v1 working ✅",
+  });
+});
+
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
 app.use("/api/v1/analytics", analyticsRouter);
 
+// 404 Route handler
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+  });
+});
 
 dbConnection()
 
