@@ -2,6 +2,9 @@ import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 export const Context = createContext({ isAuthenticated: false });
 

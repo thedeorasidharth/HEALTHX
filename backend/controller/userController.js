@@ -44,22 +44,18 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   if (!email || !password || !role) {
     return next(new ErrorHandler("Please Fill Full Form!", 400));
   }
-  console.log("Login Attempt:", { email, role });
   const user = await User.findOne({ email }).select("+password");
   
   if (!user) {
-    console.log("User not found for email:", email);
     return next(new ErrorHandler("Invalid Email Or Password!", 400));
   }
 
   const isPasswordMatch = await user.comparePassword(password);
-  console.log("Password Match Result:", isPasswordMatch);
   
   if (!isPasswordMatch) {
     return next(new ErrorHandler("Invalid Email Or Password!", 400));
   }
   
-  console.log("Role Check:", { requested: role, found: user.role });
   if (role !== user.role) {
     return next(new ErrorHandler(`User Not Found With This Role!`, 400));
   }
@@ -219,6 +215,8 @@ export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
     .cookie("adminToken", "", {
       httpOnly: true,
       expires: new Date(Date.now()),
+      secure: true,
+      sameSite: "none",
     })
     .json({
       success: true,
@@ -268,6 +266,8 @@ export const logoutPatient = catchAsyncErrors(async (req, res, next) => {
     .cookie("patientToken", "", {
       httpOnly: true,
       expires: new Date(Date.now()),
+      secure: true,
+      sameSite: "none",
     })
     .json({
       success: true,
