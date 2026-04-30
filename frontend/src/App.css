@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-xl rounded-2xl;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/50 border border-brand-dark/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:bg-white transition-all text-brand-dark placeholder-brand-dark/50;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-br from-brand to-brand-dark text-white font-bold py-3 px-6 rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all;
+  }
+  .btn-outline {
+    @apply border-2 border-brand text-brand font-bold py-3 px-6 rounded-xl hover:bg-brand hover:text-white transition-all;
+  }
+}

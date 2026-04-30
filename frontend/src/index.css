@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark antialiased transition-colors duration-300 dark:bg-[#0f2e2e] dark:text-green-100;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-xl rounded-2xl transition-colors duration-300 dark:bg-[#123c3c] dark:border-green-300/30;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/50 border border-brand-dark/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:bg-white transition-all text-brand-dark placeholder-brand-dark/50 dark:bg-[#1b4d4d] dark:border-green-300 dark:text-green-100 dark:placeholder-green-100/60 dark:focus:bg-[#123c3c];
+  }
+
+  /* Skeleton UI Shimmer Animation */
+  @keyframes shimmer {
+    0% { background-position: -468px 0; }
+    100% { background-position: 468px 0; }
+  }
+
+  .skeleton {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    background-size: 800px 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .dark .skeleton {
+    background: #1b4d4d;
+    background-image: linear-gradient(to right, #1b4d4d 0%, #246060 20%, #1b4d4d 40%, #1b4d4d 100%);
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-brand to-brand-dark text-white font-bold py-3 px-6 rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all dark:from-green-400 dark:to-green-400 dark:text-black;
+  }
+  .btn-outline {
+    @apply border-2 border-brand text-brand font-bold py-3 px-6 rounded-xl hover:bg-brand hover:text-white transition-all dark:border-green-300 dark:text-green-200 dark:hover:bg-green-300 dark:hover:text-black;
+  }
+}
